@@ -23,7 +23,7 @@ jobs:
         run: mvn -B package --file java-maven-sonar-argocd-helm-k8s/spring-boot-app/pom.xml
 
       - name: Print the value of the secret  
-        run: Write-Host ${{ secrets.AWS_DEPLOYER }}
+        run: echo ${{ secrets.AWS_DEPLOYER }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
