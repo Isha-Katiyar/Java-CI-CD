@@ -9,6 +9,9 @@ jobs:
   push_to_registry:
     name: Build docker image
     runs-on: ubuntu-latest
+    permissions: 
+      id-token: write
+      contents: read-only
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
@@ -26,7 +29,7 @@ jobs:
         run: echo ${{ secrets.AWS_DEPLOYER }}
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v3
         with:
           role-to-assume: ${{ secrets.AWS_DEPLOYER }}
           aws-region: us-east-2
