@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions: 
       id-token: write
-      contents: read-only
+      contents: read
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
