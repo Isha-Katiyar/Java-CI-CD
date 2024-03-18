@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_TAG: ${{ github.sha }}
+  IMAGE_TAG: latest
 
 jobs:
   push_to_registry:
