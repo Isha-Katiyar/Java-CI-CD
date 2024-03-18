@@ -28,9 +28,6 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file java-maven-sonar-argocd-helm-k8s/spring-boot-app/pom.xml
 
-      - name: Print the value of the secret  
-        run: aws ecr-public get-login-password --region us-east-1
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
@@ -53,7 +50,7 @@ jobs:
          docker build -t ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG ./java-maven-sonar-argocd-helm-k8s/spring-boot-app
 
       - name: Push the image to Amazon ECR
-        run:  docker push public.ecr.aws/o5m3m7a1/java-ci-cd:latest #${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
+        run:  docker push ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
         
 
       
