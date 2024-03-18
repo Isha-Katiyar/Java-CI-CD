@@ -5,6 +5,10 @@ on:
     #branches: main
   workflow_dispatch:
 
+env:
+  ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  IMAGE_TAG: ${{ github.sha }}
+
 jobs:
   push_to_registry:
     name: Build docker image
@@ -43,9 +47,6 @@ jobs:
 
       - name: Build and tag the image
         id: build-image
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ github.sha }}
         run: |
          # Build a docker container and push it to ECR so that it can be deployed to ECS.
          docker build -t ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG ./java-maven-sonar-argocd-helm-k8s/spring-boot-app
