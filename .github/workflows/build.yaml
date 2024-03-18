@@ -53,6 +53,7 @@ jobs:
          docker build -t ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG ./java-maven-sonar-argocd-helm-k8s/spring-boot-app
 
       - name: Push the image to Amazon ECR
-        run:  docker push ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
+        run:  docker push public.ecr.aws/o5m3m7a1/java-ci-cd:latest #${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
+        
 
       
