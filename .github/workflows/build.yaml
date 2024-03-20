@@ -62,7 +62,7 @@ jobs:
       - name: Retrieve Task Definition
         run: |
           # Use AWS CLI to retrieve task definition
-          TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition ${TASK_DEFINITION_ARN})
+          TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition ${{ secrets.TASK_DEFINITION_ARN }})
 
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
