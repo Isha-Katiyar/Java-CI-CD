@@ -7,7 +7,7 @@ on:
 
 env:
   IMAGE_TAG: latest
-  ECS_TASK_DEFINITION: ./ecs/DemoTask-revision1.json
+  ECS_TASK_DEFINITION: ./ecs/demotask-ct-revision1.json
   CONTAINER_NAME: ${{ secrets.CONTAINER_NAME }}
   ECS_SERVICE: democt-service
   ECS_CLUSTER: demotask-ct
